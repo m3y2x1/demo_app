@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  
+  resources :users do
+  
+    resources :microposts, only: [:new, :create]  #only when creating new
+  end
+  resources :microposts
+  
+
+  root 'users#index'
+
+  get '/yx', to: "users#index", as: 'my_name' #customize name
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
